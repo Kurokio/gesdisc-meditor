@@ -1,119 +1,156 @@
 {
-    "$schema": "http://json-schema.org/schema#",
-    "$id": "https://disc.gsfc.nasa.gov/schemas/model.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://spase-group.org/data/schema/index",
     "type": "object",
-    "required": ["ResourceID", "OrganizationName"],
+    "required": ["Spase"],
     "properties": {
-        "Version": {
-            "type": "string",
-            "description": "Indicates the release identifier. When used to indicate the release of the SPASE data model, it is a in the form \"Major.Minor.Fix\" where Major: A significant change in the architecture of the model or rewrite of the implementation. This includes major changes in design or implementation language. This number starts at 0 (zero). Minor: An addition of terms or features that require changes in documentation/external API. This number starts at 0 (zero). Fix: Any change that does not require documentation/external API changes. This number starts at 0 (zero).",
-            "default": "2.7.1"
+        "SPASE_ID" : {
+            "type": "string"
         },
-        "Status": {
-            "type": "string",
-            "enum": ["Completed", "Deprecated", "Ongoing", "Unavailable", "Withdrawn"],
-            "description": "Indicates the status of the resource."
-        },
-        "MetadataRightsList": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/rights"
-            },
-            "description": "Wrapper element to allow multiple rights for the metadata. Thus, rights properties may be listed as needed to record complex rights characteristics.",
-            "uniqueItems": true
-        },
-        "ResourceID": {
-            "type": "string",
-            "pattern": "[^:]+://[^/]+/.+",
-            "description": "A ResourceID is a URI that has the form \"scheme://authority/path\" where \"scheme\" is \"spase\" for those resources administered through the SPASE framework, \"authority\" is the unique identifier for the resource provider registered within the SPASE framework and \"path\" is the unique identifier of the resource within the context of the \"authority\". All ResourceIDs must be unique within the SPASE framework"
-        },
-        "NamingAuthority": {
-            "type": "string",
-            "description": "The entity or group of organizations that commissioned the creation of the resource being described (see https://spase-group.org/services/naming-authority.html for more detail)."
-        },
-        "ResourceType": {
-            "type": "string",
-            "enum": ["Annotation", "Catalog", "Collection", "DisplayData", "DisplayOutput", "Document",
-                        "Granule", "Instrument", "Model", "ModelRun", "NumericalData", "NumericalOutput",
-                        "Observatory", "Person", "Registry", "Repository", "Service", "Software"],
-            "description": "Identifiers for all SPASE resource types."
-        },
-        "ReleaseDate": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The date and time when a SPASE resource is made available. The availability of a resource coincides with the release of a resource description. If the Release Date is specified as a future date, then it indicates that resource should not be made available until that time. However, this is only advisory and in practice the Release Date should be the actual date the resource description was published."
-        },
-        "PersonName": {
-            "type": "string",
-            "description": "The words used to address an individual."
-        },
-        "OrganizationName": {
-            "type": "string",
-            "description": "A unit within a company or other entity (e.g., government agency or branch of service) within which many projects are managed as a whole."
-        },
-        "Address": {
-            "type": "string",
-            "description": "Directions for finding some location written on letters or packages that are to be delivered to that location."
-        },
-        "Email": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "description": "The electronic address at which the individual may be contacted expressed in the form \"local-part@domain\"."
-        },
-        "PhoneNumber": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "description": "The symbols and numerals required to contact an individual by telephone. The string may contain punctuation marks such as dash \"-\" or dot \".\" to separate fields within the string."
-        },
-        "FaxNumber": {
-            "type": "string",
-            "description": "The symbols and numerals required to send a facsimile (FAX) to an individual by telephone. The string may contain punctuation marks such as dash \"-\" or dot \".\" to separate fields within the string."
-        },
-        "ORCIdentifier": {
-            "type": "string",
-            "description": "An Open Researcher Contributor (ORC) identifier which is a unique alphanumeric string assigned by a registration agency (https://orcid.org/) to identify an individual. It has the format XXXX-XXXX-XXXX-XXXX."
-        },
-        "Note": {
-            "type": "string",
-            "description": "Information which is useful or important for the understanding of a value or parameter."
-        },
-        "RORIdentifier": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "description": "The assigned Research Organization Registry (ROR) identifier, see https://ror.org/."
-        },
-        "Extension": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/extension"
+        "Spase": {
+            "type": "object",
+            "required": ["Version", "Person"],
+            "unevaluatedProperties": false,
+            "properties": {
+                "Version": {
+                    "type": "string",
+                    "description": "Indicates the release identifier. When used to indicate the release of the SPASE data model, it is a in the form \"Major.Minor.Fix\" where Major: A significant change in the architecture of the model or rewrite of the implementation. This includes major changes in design or implementation language. This number starts at 0 (zero). Minor: An addition of terms or features that require changes in documentation/external API. This number starts at 0 (zero). Fix: Any change that does not require documentation/external API changes. This number starts at 0 (zero).",
+                    "default": "2.7.1"
+                },
+                "Status": {
+                    "type": "string",
+                    "enum": ["Completed", "Deprecated", "Ongoing", "Unavailable", "Withdrawn"],
+                    "description": "Indicates the status of the resource."
+                },
+                "MetadataRightsList": {
+                    "type": "object",
+                    "unevaluatedProperties": false,
+                    "properties": {
+                        "Rights": {
+                            "oneOf": [
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/$defs/rights"
+                                    },
+                                    "uniqueItems": true,
+                                    "minItems": 2
+                                },
+                                {
+                                    "$ref": "#/$defs/rights"
+                                }
+                            ]
+                        }
+                    },
+                    "description": "Wrapper element to allow multiple rights for the metadata. Thus, rights properties may be listed as needed to record complex rights characteristics."
+                },
+                "Person": {
+                    "type": "object",
+                    "required": ["ResourceID", "OrganizationName"],
+                    "unevaluatedProperties": false,
+                    "properties": {
+                        "ResourceID": {
+                            "type": "string",
+                            "pattern": "[^:]+://[^/]+/.+",
+                            "description": "A ResourceID is a URI that has the form \"scheme://authority/path\" where \"scheme\" is \"spase\" for those resources administered through the SPASE framework, \"authority\" is the unique identifier for the resource provider registered within the SPASE framework and \"path\" is the unique identifier of the resource within the context of the \"authority\". All ResourceIDs must be unique within the SPASE framework"
+                        },
+                        "NamingAuthority": {
+                            "type": "string",
+                            "description": "The entity or group of organizations that commissioned the creation of the resource being described (see https://spase-group.org/services/naming-authority.html for more detail)."
+                        },
+                        "ResourceType": {
+                            "type": "string",
+                            "const": "Person",
+                            "description": "Identifiers for all SPASE resource types."
+                        },
+                        "ReleaseDate": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The date and time when a SPASE resource is made available. The availability of a resource coincides with the release of a resource description. If the Release Date is specified as a future date, then it indicates that resource should not be made available until that time. However, this is only advisory and in practice the Release Date should be the actual date the resource description was published."
+                        },
+                        "PersonName": {
+                            "type": "string",
+                            "description": "The words used to address an individual."
+                        },
+                        "OrganizationName": {
+                            "type": "string",
+                            "description": "A unit within a company or other entity (e.g., government agency or branch of service) within which many projects are managed as a whole."
+                        },
+                        "Address": {
+                            "type": "string",
+                            "description": "Directions for finding some location written on letters or packages that are to be delivered to that location."
+                        },
+                        "Email": {
+                            "oneOf": [
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "minItems": 2,
+                                    "uniqueItems": true
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ],
+                            "description": "The electronic address at which the individual may be contacted expressed in the form \"local-part@domain\"."
+                        },
+                        "PhoneNumber": {
+                            "oneOf": [
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "minItems": 2,
+                                    "uniqueItems": true
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ],
+                            "description": "The symbols and numerals required to contact an individual by telephone. The string may contain punctuation marks such as dash \"-\" or dot \".\" to separate fields within the string."
+                        },
+                        "FaxNumber": {
+                            "type": "string",
+                            "description": "The symbols and numerals required to send a facsimile (FAX) to an individual by telephone. The string may contain punctuation marks such as dash \"-\" or dot \".\" to separate fields within the string."
+                        },
+                        "ORCIdentifier": {
+                            "type": "string",
+                            "description": "An Open Researcher Contributor (ORC) identifier which is a unique alphanumeric string assigned by a registration agency (https://orcid.org/) to identify an individual. It has the format XXXX-XXXX-XXXX-XXXX."
+                        },
+                        "Note": {
+                            "type": "string",
+                            "description": "Information which is useful or important for the understanding of a value or parameter."
+                        },
+                        "RORIdentifier": {
+                            "oneOf": [
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "minItems": 2,
+                                    "uniqueItems": true
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ],
+                            "description": "The assigned Research Organization Registry (ROR) identifier, see https://ror.org/."
+                        },
+                        "Extension": {}
+                    }
+                }
             }
         }
     },
     "$defs": {
-        "extension": {
-            "type": "object",
-            "properties": {
-                "@lang": {
-                    "type": "string",
-                    "default": "en",
-                    "description": "The two-character indicator of language selected from the ISO 639-1 codes for the representation of names of languages."
-                },
-                "anything": {
-                    "type": ["string", "number", "boolean", "object", "array", "null"]
-                }
-            },
-            "required": ["@lang"],
-            "description": "A container of other metadata which is not part of the SPASE data model. The contents of this element are defined by individual usage. The organization and content are constrained by the implementation. For example, in an XML representation of the SPASE metadata the content must conform to the XML specifications."
-        },
         "rights": {
             "type": "object",
             "description": "Any rights information for this item. This property may be repeated to record complex rights characteristics for the same item. May be used for both metadata and dataset licenses.",
+            "unevaluatedProperties": false,
             "properties": {
                 "SchemeURI": {
                     "type": "string",
