@@ -17,6 +17,18 @@
             ],
             "unevaluatedProperties": false,
             "properties": {
+                "xmlns": {
+                  	"type": "string",
+                  	"default": "http://www.spase-group.org/data/schema"
+                },
+                "xmlns:xsi": {
+                  	"type": "string",
+                  	"default": "http://www.w3.org/2001/XMLSchema-instance"
+                },       
+                "xsi:schemaLocation": {
+                  	"type": "string",
+                  	"default": "https://www.spase-group.org/data/schema https://www.spase-group.org/data/schema/spase-2.7.1.xsd"
+                },                    
                 "Version": {
                     "type": "string",
                     "description": "Indicates the release identifier. When used to indicate the release of the SPASE data model, it is a in the form \"Major.Minor.Fix\" where Major: A significant change in the architecture of the model or rewrite of the implementation. This includes major changes in design or implementation language. This number starts at 0 (zero). Minor: An addition of terms or features that require changes in documentation/external API. This number starts at 0 (zero). Fix: Any change that does not require documentation/external API changes. This number starts at 0 (zero).",
