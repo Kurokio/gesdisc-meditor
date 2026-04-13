@@ -18,17 +18,17 @@
             "unevaluatedProperties": false,
             "properties": {
                 "xmlns": {
-                  	"type": "string",
-                  	"default": "http://www.spase-group.org/data/schema"
+                    "type": "string",
+                    "default": "http://www.spase-group.org/data/schema"
                 },
                 "xmlns:xsi": {
-                  	"type": "string",
-                  	"default": "http://www.w3.org/2001/XMLSchema-instance"
+                    "type": "string",
+                    "default": "http://www.w3.org/2001/XMLSchema-instance"
                 },       
                 "xsi:schemaLocation": {
-                  	"type": "string",
-                  	"default": "https://www.spase-group.org/data/schema https://www.spase-group.org/data/schema/spase-2.7.1.xsd"
-                },                    
+                    "type": "string",
+                    "default": "https://www.spase-group.org/data/schema https://www.spase-group.org/data/schema/spase-2.7.1.xsd"
+                },
                 "Version": {
                     "type": "string",
                     "description": "Indicates the release identifier. When used to indicate the release of the SPASE data model, it is a in the form \"Major.Minor.Fix\" where Major: A significant change in the architecture of the model or rewrite of the implementation. This includes major changes in design or implementation language. This number starts at 0 (zero). Minor: An addition of terms or features that require changes in documentation/external API. This number starts at 0 (zero). Fix: Any change that does not require documentation/external API changes. This number starts at 0 (zero).",
@@ -1000,11 +1000,13 @@
                     "description": "A common or provider assigned name for a range of values."
                 },
                 "Low": {
-                    "type": "number",
+                    "type": "string",
+                    "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                     "description": "The smallest value within a range of possible values."
                 },
                 "High": {
-                    "type": "number",
+                    "type": "string",
+                    "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                     "description": "The largest value within a range of possible values."
                 }
             },
@@ -1609,7 +1611,8 @@
                     "unevaluatedProperties": false,
                     "properties": {
                         "Quantity": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "A value that describes a characteristic of a system."
                         },
                         "Units": {
@@ -1950,11 +1953,13 @@
                     "description": "A string defining the output format used when extracting data values out to a file or screen. The magnitude and the number of significant figures needed should be carefully considered. The output format string can be in either Fortran or C syntax."
                 },
                 "ScaleMin": {
-                    "type": "number",
+                    "type": "string",
+                    "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                     "description": "The minimum value that the variable is expected to attain. Used, for example, by automated plotting software."
                 },
                 "ScaleMax": {
-                    "type": "number",
+                    "type": "string",
+                    "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                     "description": "The maximum value that the variable is expected to attain. Used, for example, by automated plotting software."
                 },
                 "ScaleType": {
@@ -2424,11 +2429,13 @@
                             "description": "Identifiers for names associated with wavelengths. Based on the ISO 21348 Solar Irradiance Standard. Additions have been made to extend the frequency ranges to include those used in space physics. Those additions are indicated in blue text. The \"Total Solar Irradiance\" category has not been included since it is a type of measurement and not a specific spectral range. See Appendix A: Comparison of Spectrum Domains for a comparison of the spectral ranges with other systems."
                         },
                         "Low": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The smallest value within a range of possible values."
                         },
                         "High": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The largest value within a range of possible values."
                         },
                         "Units": {
@@ -2739,14 +2746,16 @@
                             "title": "Array",
                             "type": "array",
                             "items": {
-                                "type": "number"
+                                "type": "string",
+                                "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$"
                             },
                             "uniqueItems": true,
                             "minItems": 2
                         },
                         {
                             "title": "Single",
-                            "type": "number"
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$"
                         }
                     ],
                     "description": "The number of protons in the nucleus of an atom."
@@ -2757,11 +2766,13 @@
                     "unevaluatedProperties": false,
                     "properties": {
                         "Low": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The smallest value within a range of possible values."
                         },
                         "High": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The largest value within a range of possible values."
                         },
                         "Units": {
@@ -2798,11 +2809,13 @@
                     "unevaluatedProperties": false,
                     "properties": {
                         "Low": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The smallest value within a range of possible values."
                         },
                         "High": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The largest value within a range of possible values."
                         },
                         "Units": {
@@ -2839,11 +2852,13 @@
                     "unevaluatedProperties": false,
                     "properties": {
                         "Low": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The smallest value within a range of possible values."
                         },
                         "High": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The largest value within a range of possible values."
                         },
                         "Units": {
@@ -2880,11 +2895,13 @@
                     "unevaluatedProperties": false,
                     "properties": {
                         "Low": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The smallest value within a range of possible values."
                         },
                         "High": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The largest value within a range of possible values."
                         },
                         "Units": {
@@ -2921,11 +2938,13 @@
                     "unevaluatedProperties": false,
                     "properties": {
                         "Low": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The smallest value within a range of possible values."
                         },
                         "High": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The largest value within a range of possible values."
                         },
                         "Units": {
@@ -2969,7 +2988,8 @@
                     "description": "The total number of protons and neutrons (together known as nucleons) in an atomic nucleus."
                 },
                 "PopulationChargeState": {
-                    "type": "number",
+                    "type": "string",
+                    "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                     "description": "Charge of a particle in a population, in units of the charge of a proton. Charge state of a bare proton is equal to one."
                 },
                 "SourceRegion": {
@@ -3240,11 +3260,13 @@
                     "unevaluatedProperties": false,
                     "properties": {
                         "Low": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The smallest value within a range of possible values."
                         },
                         "High": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The largest value within a range of possible values."
                         },
                         "Units": {
@@ -3307,11 +3329,13 @@
                             "description": "Identifiers for names associated with wavelengths. Based on the ISO 21348 Solar Irradiance Standard. Additions have been made to extend the frequency ranges to include those used in space physics. Those additions are indicated in blue text. The \"Total Solar Irradiance\" category has not been included since it is a type of measurement and not a specific spectral range. See Appendix A: Comparison of Spectrum Domains for a comparison of the spectral ranges with other systems."
                         },
                         "Low": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The smallest value within a range of possible values."
                         },
                         "High": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The largest value within a range of possible values."
                         },
                         "Units": {
@@ -3374,11 +3398,13 @@
                             "description": "Identifiers for names associated with wavelengths. Based on the ISO 21348 Solar Irradiance Standard. Additions have been made to extend the frequency ranges to include those used in space physics. Those additions are indicated in blue text. The \"Total Solar Irradiance\" category has not been included since it is a type of measurement and not a specific spectral range. See Appendix A: Comparison of Spectrum Domains for a comparison of the spectral ranges with other systems."
                         },
                         "Low": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The smallest value within a range of possible values."
                         },
                         "High": {
-                            "type": "number",
+                            "type": "string",
+                            "pattern": "^(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN$",
                             "description": "The largest value within a range of possible values."
                         },
                         "Units": {
